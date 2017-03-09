@@ -46,6 +46,7 @@
             <xsd:attribute name="data-source-names" type="xsd:string" use="optional" />
             <xsd:attribute name="database-strategy" type="xsd:string" use="optional" />
             <xsd:attribute name="table-strategy" type="xsd:string" use="optional" />
+            <xsd:attribute name="table-index-width" type="xsd:string" use="optional" />
         </xsd:complexType>
     </xsd:element>
     <xsd:element name="auto-increment-column">

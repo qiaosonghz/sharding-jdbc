@@ -110,7 +110,7 @@ public final class ShardingRuleBuilder {
                     .databaseShardingStrategy(buildShardingStrategy(tableRuleConfig.getDatabaseStrategy(), DatabaseShardingStrategy.class))
                     .tableShardingStrategy(buildShardingStrategy(tableRuleConfig.getTableStrategy(), TableShardingStrategy.class));
             if (null != tableRuleConfig.getActualTables()) {
-                tableRuleBuilder.actualTables(new InlineParser(tableRuleConfig.getActualTables()).evaluate());
+                tableRuleBuilder.actualTables(new InlineParser(tableRuleConfig.getActualTables(), tableRuleConfig.getTableIndexWidth()).evaluate());
             }
             if (!Strings.isNullOrEmpty(tableRuleConfig.getDataSourceNames())) {
                 tableRuleBuilder.dataSourceNames(new InlineParser(tableRuleConfig.getDataSourceNames()).evaluate());

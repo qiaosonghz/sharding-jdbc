@@ -115,6 +115,10 @@ public class ShardingJdbcDataSourceBeanDefinitionParser extends AbstractBeanDefi
         if (!Strings.isNullOrEmpty(actualTables)) {
             factory.addPropertyValue("actualTables", actualTables);
         }
+        String tableIndexWidth = tableElement.getAttribute(ShardingJdbcDataSourceBeanDefinitionParserTag.TABLE_INDEX_WIDTH);
+        if (!Strings.isNullOrEmpty(tableIndexWidth)) {
+            factory.addPropertyValue("tableIndexWidth", Integer.valueOf(tableIndexWidth));
+        }
         String dataSourceNames = tableElement.getAttribute(ShardingJdbcDataSourceBeanDefinitionParserTag.DATA_SOURCE_NAMES_ATTRIBUTE);
         if (!Strings.isNullOrEmpty(dataSourceNames)) {
             factory.addPropertyValue("dataSourceNames", dataSourceNames);

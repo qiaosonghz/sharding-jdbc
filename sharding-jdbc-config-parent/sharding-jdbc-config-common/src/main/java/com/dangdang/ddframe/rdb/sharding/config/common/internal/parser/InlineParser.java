@@ -19,11 +19,14 @@ package com.dangdang.ddframe.rdb.sharding.config.common.internal.parser;
 
 import com.google.common.base.Function;
 import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import groovy.lang.GString;
 import groovy.lang.GroovyShell;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
@@ -38,11 +41,15 @@ import java.util.Set;
  * @author zhangliang
  */
 @RequiredArgsConstructor
+@AllArgsConstructor
 public final class InlineParser {
     
     private static final char SPLITTER = ',';
     
     private final String inlineExpression;
+
+    @Getter
+    private Integer indexWidth = 0;
     
     /**
      * 分隔行内配置.
@@ -140,7 +147,11 @@ public final class InlineParser {
         for (int i = 0; i < segment.getStrings().length; i++) {
             result.append(segment.getStrings()[i]);
             if (i < cartesianValue.size()) {
-                result.append(cartesianValue.get(i));
+                String value = cartesianValue.get(i);
+                if ((getIndexWidth() != null) && (getIndexWidth() > 0)) {
+                    value = Strings.padStart(cartesianValue.get(i), getIndexWidth(), '0');
+                }
+                result.append(value);
             }
         }
         return result.toString();

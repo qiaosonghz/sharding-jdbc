@@ -43,4 +43,6 @@ public class TableRuleConfig {
     private StrategyConfig tableStrategy;
     
     private List<AutoIncrementColumnConfig> autoIncrementColumns = new ArrayList<>();
+
+    private Integer tableIndexWidth;
 }

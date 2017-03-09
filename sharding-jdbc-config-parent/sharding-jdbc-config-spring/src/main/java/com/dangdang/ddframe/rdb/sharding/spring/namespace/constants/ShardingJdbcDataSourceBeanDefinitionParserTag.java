@@ -69,4 +69,6 @@ public final class ShardingJdbcDataSourceBeanDefinitionParserTag {
     public static final String COLUMN_ID_GENERATOR_CLASS = "column-id-generator-class";
     
     public static final String ID_GENERATOR_CLASS = "id-generator-class";
+
+    public static final String TABLE_INDEX_WIDTH = "table-index-width";
 }
